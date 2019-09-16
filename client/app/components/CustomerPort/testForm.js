@@ -139,37 +139,37 @@ class testForm extends Component {
             <label>
               First Name:
               <input type="text" ref={(c) => this.firstName = c} name="firstName" />
-            </label>
+            </label><br />
             <label>
               Last Name:
               <input type="text" ref={(c) => this.lastName = c} name="lastName" />
-            </label>
+            </label><br />
             <label>
               Date of Birth:
               <input type="date" id="start" name="dateOfBirth" 
               ref={(c) => this.dateOfBirth = c} min="1800-01-01" max="2019-12-31" />
-            </label>
+            </label><br />
             <label>
               Email Address:
               <input type="text" ref={(c) => this.emailAddress = c} name="emailAddress" onChange={this.handleChange} noValidate />
-            </label>
+            </label><br />
             {errors.emailAddress.length > 0 && 
                 <span className='errors'>{errors.emailAddress}</span>}
             <label>
               Mobile Number:
               <input type="text" ref={(c) => this.mobileNumber = c} name="mobileNumber" onChange={this.handleChange} noValidate />
-            </label>
+            </label><br />
             {errors.mobileNumber.length > 0 && 
                 <span className='errors'>{errors.mobileNumber}</span>}
             <label>
               Address:
               <input type="text" ref={(c) => this.addressLine1 = c} name="addressLine1" />
               <input type="text" ref={(c) => this.addressLine2 = c} name="addressLine2" />
-            </label>
+            </label><br />
             <label>
               Suburb
               <input type="text" ref={(c) => this.addressSuburb = c} name="addressSuburb" />
-            </label>
+           </label><br />
             <label>
               State/Territory
               <select ref={(c) => this.addressState = c}  onChange= {this.handleChange} >
@@ -183,46 +183,46 @@ class testForm extends Component {
                 <option value="Victoria">Victoria</option>
                 <option value="Western Australia">Western Australia</option>
               </select>
-            </label>
+            </label><br />
             <label>
               Postcode
               <input type="file" ref={(c) => this.postcode = c} name="postcode" />
-            </label>
+            </label><br />
             <label>
               Company:
               <input type="text" ref={(c) => this.companyName = c} name="companyName" />
-            </label>
+            </label><br />
             <label>
               Company ABN:
               <input type="text" ref={(c) => this.companyABN = c} name="companyABN" onChange={this.handleChange} noValidate />
-            </label>
+            </label><br />
             {errors.companyABN.length > 0 && 
                 <span className='errors'>{errors.companyABN}</span>}
             <label>
               Loan Purpose:
               <input type="text" ref={(c) => this.loanPurpose = c} name="loanPurpose" />
-            </label>
+            </label><br />
             <label>
               Loan Amount:
               <input type="text" ref={(c) => this.loanAmount = c} name="loanAmount" 
               placeholder = "$50,000 - $2,000,000" onChange={this.handleChange} noValidate/>
-            </label>
+            </label><br />
             {errors.loanAmount.length > 0 && 
                 <span className='errors'>{errors.loanAmount}</span>}
             <label>
               Loan Term:
               <input type="text" ref={(c) => this.loanTerm = c} name="loanTerm" 
               placeholder = "3 - 24 Months" onChange={this.handleChange} noValidate/>
-            </label>
+            </label><br />
             {errors.loanTerm.length > 0 && 
                 <span className='errors'>{errors.loanTerm}</span>}
-            
+           
             <button onClick={this.submitEvent} type="submit" >
               Submit
             </button>
             <button onClick = {this.backOnclick.bind(this)} >
               Back
-            </button>
+            </button><br />
         </form>
       );
     }
