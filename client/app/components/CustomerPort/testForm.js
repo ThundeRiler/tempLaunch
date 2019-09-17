@@ -106,7 +106,7 @@ class testForm extends Component {
                         'dateOfBirth': this.dateOfBirth.value,
                         'emailAddress': this.emailAddress.value,
                         'mobileNumber': this.mobileNumber.value,
-                        'addressLine': this.addressLine2.value + ', ' + this.addressLine2.value,
+                        'addressLine': this.addressLine1.value + ', ' + this.addressLine2.value,
                         'addressSuburb': this.addressSuburb.value,
                         'addressState': this.addressState.value,
                         'postcode': this.postcode.value,
@@ -124,13 +124,14 @@ class testForm extends Component {
               'Content-Type': 'application/json'
           }
         })
-    }
+        window.location.href='/CustomerPort/TermSheet';
+    };
     
     backOnclick(e){
       e.preventDefault()
       console.log('lol')
       window.location.href='/';
-    }
+    };
   
     render() {
       const {errors} = this.state;
