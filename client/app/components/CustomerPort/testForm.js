@@ -51,7 +51,7 @@ class testForm extends Component {
       event.preventDefault();
       const { name, value } = event.target;
       let errors = this.state.errors;
-      // typos of Errors
+      // types of Errors
       switch (name) {
         case 'emailAddress': 
           errors.emailAddress = 
@@ -106,7 +106,7 @@ class testForm extends Component {
                         'dateOfBirth': this.dateOfBirth.value,
                         'emailAddress': this.emailAddress.value,
                         'mobileNumber': this.mobileNumber.value,
-                        'addressLine': this.addressLine2.value + ', ' + this.addressLine2.value,
+                        'addressLine': this.addressLine1.value + ', ' + this.addressLine2.value,
                         'addressSuburb': this.addressSuburb.value,
                         'addressState': this.addressState.value,
                         'postcode': this.postcode.value,
