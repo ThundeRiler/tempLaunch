@@ -124,13 +124,14 @@ class testForm extends Component {
               'Content-Type': 'application/json'
           }
         })
-    }
+        window.location.href='/CustomerPort/TermSheet';
+    };
     
     backOnclick(e){
       e.preventDefault()
       console.log('lol')
       window.location.href='/';
-    }
+    };
   
     render() {
       const {errors} = this.state;
