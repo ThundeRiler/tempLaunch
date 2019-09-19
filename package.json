@@ -14,13 +14,15 @@
     "@babel/preset-react": "^7.0.0-beta.42",
     "autoprefixer": "^8.2.0",
     "babel-loader": "^8.0.0-beta.2",
+    "body-parser": "^1.19.0",
     "connect-history-api-fallback": "^1.5.0",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.1.0",
-    "mongoose": "^5.0.11",
+    "mongodb": "^3.3.2",
+    "mongoose": "^5.7.1",
     "node-sass": "^4.7.2",
     "nodemon": "^1.17.2",
     "pipedrive": "^8.0.0",
@@ -39,5 +41,17 @@
     "webpack-hot-middleware": "^2.21.2",
     "webpack-merge": "^4.1.2",
     "whatwg-fetch": "^2.0.3"
-  }
+  },
+  "name": "launchcap",
+  "description": "This is a boilerplate project using the following technologies:\r - [React](https://facebook.github.io/react/) and [React Router](https://reacttraining.com/react-router/) for the frontend\r - [Express](http://expressjs.com/) and [Mongoose](http://mongoosejs.com/) for the backend\r - [Sass](http://sass-lang.com/) for styles (using the SCSS syntax)\r - [Webpack](https://webpack.github.io/) for compilation",
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://inewasujan@bitbucket.org/YC_gagami/launchcap-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "homepage": "https://bitbucket.org/YC_gagami/launchcap-project#readme"
 }

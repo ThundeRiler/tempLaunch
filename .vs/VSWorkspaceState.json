@@ -4,9 +4,13 @@
     "\\client",
     "\\client\\app",
     "\\client\\app\\components",
-    "\\client\\app\\components\\App",
-    "\\client\\app\\components\\CustomerPort"
+    "\\client\\app\\components\\CustomerPort",
+    "\\client\\app\\components\\Home",
+    "\\server",
+    "\\server\\models",
+    "\\server\\routes",
+    "\\server\\routes\\api"
   ],
-  "SelectedNode": "\\client\\app\\components\\CustomerPort",
+  "SelectedNode": "\\server\\models\\Counter.js",
   "PreviewInSolutionExplorer": false
 }
