@@ -67,10 +67,11 @@ class testForm extends Component {
             : '';
         break;
       case 'companyNotes':
-        console.log(isHTML(value))
+        console.log(isHTML(value) == false)
+        errors.companyNotes =
         isHTML(value)
-            ? 'Transfer sthe data format: https://www.textfixer.com/html/convert-text-html.php'
-            : '';
+            ? ''
+            : 'Transfer sthe data format: https://www.textfixer.com/html/convert-text-html.php';
         break;
       default:
         break;
