@@ -12,10 +12,6 @@ import App from './components/App/App';
 import NotFound from './components/App/NotFound';
 
 import Home from './components/Home/Home';
-
-import CustomerPort from './components/CustomerPort/customerPort';
-
-
 import './styles/styles.scss';
 
 render((
@@ -23,7 +19,6 @@ render((
     <App>
       <Switch>
         <Route exact path="/" component={Home}/>
-        <Route path="/CustomerPort" component={CustomerPort}/>
         <Route component={NotFound}/>
       </Switch>
     </App>
