@@ -2,9 +2,10 @@ const Counter = require('../../models/Counter');
 
 // Pipedrive token
 const Pipedrive = require('pipedrive');
-const pipedrive = new Pipedrive.Client('3a7f85236ff8b8c18b1afdb49dd826341316617e', { strictMode: true });
+const pipedrive = new Pipedrive.Client('3a08f52c091b8b3c1d8201867c20b15f10b805b4', { strictMode: true });
 
 module.exports = (app) => {
+
 
   app.post('/api/testapi', (req, res) => {
     let personName = req.body.personName;
@@ -14,18 +15,19 @@ module.exports = (app) => {
     let addressLine = req.body.addressLine;
     let addressSuburb = req.body.addressSuburb;
     let addressState = req.body.addressState;
-    let formData = req.body.formData;
+    //let formData = req.files;
     let companyName = req.body.companyName;
     let companyABN = req.body.companyABN;
     let loanAmount = req.body.loanAmount;
     let loanTerm = req.body.loanTerm;
     let loanPurpose = req.body.loanPurpose;
 
-
-    //Set up organization, person and deal
+    
+    // Set up organization, person and deal
     // Add a new organization
     const pipedriveOrganizations = new Promise((resolve, reject) => {
       pipedrive.Organizations.add({'name': companyName}, function(err,addDataOrganizations){
+        console.log(addDataOrganizations)
         var organizationID = addDataOrganizations.id;
         if (err) throw err;
         resolve(organizationID);

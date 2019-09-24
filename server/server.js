@@ -10,6 +10,10 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('../config/config');
 const webpackConfig = require('../webpack.config');
 const bodyParser = require('body-parser');
+const upload = require('express-fileupload');
+//const multer = require('multer')
+//const cors = require('cors');
+
 
 const isDev = process.env.NODE_ENV !== 'production';
 const port  = process.env.PORT || 8080;
@@ -22,10 +26,15 @@ const port  = process.env.PORT || 8080;
 mongoose.connect(isDev ? config.db_dev : config.db);
 mongoose.Promise = global.Promise;
 
+
 const app = express();
 // large the payload of uploading file
+
 app.use(express.urlencoded({limit: '50mb', extended: true }));
 app.use(express.json({limit: '50mb', extended: true}));
+app.use(upload()); // configure upload
+
+
 
 
 

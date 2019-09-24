@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 // RegExpression format provided
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
@@ -27,7 +28,7 @@ class testForm extends Component {
       addressLine2: "",
       addressSuburb: "",
       addressState: "",
-      postcode: "",
+      file:null,
       companyName: "",
       companyABN: "",
       loanPurpose: "",
@@ -48,7 +49,6 @@ class testForm extends Component {
 
 
   
-
   // Fire every time we enter a character into one of the inputs on our form
   handleChange(event) {
     event.preventDefault();
@@ -94,10 +94,28 @@ class testForm extends Component {
     })
   }
 
+  // File onchange event
+  onChange(e){
+    this.setState({file:e.target.files[0]});
+  }
+
+  // Fileupload event
+  fileUpload(file){console.log(file)
+    const formData = new FormData();
+    formData.append('file', file);
+    fetch('/api/testapi',{
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+      
+    })
+    console.log('object')
+  }
 
   // Submit Form
   submitEvent(e) {
-    assert(e.target)
     e.preventDefault()
     // Validate check
     if (validateForm(this.state.errors)) {
@@ -105,6 +123,9 @@ class testForm extends Component {
     } else {
       console.error('Invalid Form')
     }
+
+    this.fileUpload(this.state.file);
+
     // Send data to server
     let postdata = {
       'personName': this.firstName.value + ' ' + this.lastName.value,
@@ -120,7 +141,7 @@ class testForm extends Component {
       'companyABN': this.companyABN.value,
       'loanAmount': this.loanAmount.value,
       'loanTerm': this.loanTerm.value,
-      'files': e.target.result,
+      //'files': e.target.result,
     };
     
     //console.log(postdata);
@@ -131,7 +152,6 @@ class testForm extends Component {
         'Content-Type': 'application/json'
       }
     })
-    window.location.href = '/CustomerPort/TermSheet';
   };
 
   backOnclick(e) {
@@ -140,17 +160,7 @@ class testForm extends Component {
     window.location.href = '/';
   };
 
-  /*onChange(e) {
-    let files = e.target.files;
-    //console.warn('data file', files)
-    let reader = new FileReader();
-    reader.readAsDataURL(files[0]);
-    reader.onload = (e) => {
-      //console.warn('img data',e.target.result);
-      const formData = { 'files': e.target.result };
-      
-    }
-  }*/
+
 
   render() {
     const { errors } = this.state;
@@ -205,8 +215,8 @@ class testForm extends Component {
           </select>
         </label><br />
         <label>
-          Postcode
-              <input type="file" onChange={(e) => this.onChange(e)} name="postcode" />
+          File
+              <input type="file" onChange={(e) => this.onChange(e)} name="File" />
         </label><br />
         <label>
           Company:
