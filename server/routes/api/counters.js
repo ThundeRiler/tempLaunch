@@ -49,11 +49,14 @@ module.exports = (app) => {
           });
         }).catch((error) => {
           console.error(error);});
-        /*pipedriveDeals.then((deal_person_orgDict) => {
-          pipedrive.Notes.add({'content': companyNotes}, function(resolve, reject){
+        pipedriveDeals.then((deal_person_orgDict) => {
+          pipedrive.Notes.add({'content': companyNotes, 'deal_id': deal_person_orgDict.dealID, 
+          'person_id': deal_person_orgDict.personID, 'org_id': deal_person_orgDict.organizationID}, function(err, addDataNotes){
+            if(err) throw err;
+            console.log('Notes are created')
 
           })
-        })*/
+        })
       });
     });
   });

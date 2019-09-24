@@ -15,6 +15,13 @@ const isHTML = (str) => {
   return false;
 }
 
+// Error message label
+const ErrorValidationLabel = ({ txtLbl }) => (
+  <label htmlFor="" style={{ color: "red" }}>
+      {txtLbl}
+  </label>
+);
+
 
 // Validate check provided
 const validateForm = (errors) => {
@@ -71,7 +78,7 @@ class testForm extends Component {
         errors.companyNotes =
         isHTML(value)
             ? ''
-            : 'Transfer sthe data format: https://www.textfixer.com/html/convert-text-html.php';
+            : 'Transfer sthe data format: https://www.textfixer.com/html/convert-text-html.php.';
         break;
       default:
         break;
@@ -87,26 +94,26 @@ class testForm extends Component {
     e.preventDefault()
     // Validate check
     if (validateForm(this.state.errors)) {
-      console.info('Valid Form')
+      console.info('Valid Form');
+      // Send data to server
+      let postdata = {
+        'personName': this.firstName.value + ' ' + this.lastName.value,
+        'emailAddress': this.emailAddress.value,
+        'mobileNumber': this.mobileNumber.value,
+        'companyName': this.companyName.value,
+        'companyNotes': this.companyNotes.value,
+      };
+      fetch('/api/testapi', {
+        method: 'POST',
+        body: JSON.stringify(postdata),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
     } else {
       console.error('Invalid Form')
     }
 
-    // Send data to server
-    let postdata = {
-      'personName': this.firstName.value + ' ' + this.lastName.value,
-      'emailAddress': this.emailAddress.value,
-      'mobileNumber': this.mobileNumber.value,
-      'companyName': this.companyName.value,
-      'companyNotes': this.companyNotes.value,
-    };
-    fetch('/api/testapi', {
-      method: 'POST',
-      body: JSON.stringify(postdata),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
   };
 
   backOnclick(e) {
@@ -133,13 +140,13 @@ class testForm extends Component {
               <input type="text" ref={(c) => this.emailAddress = c} name="emailAddress" onChange={this.handleChange} noValidate />
         </label><br />
         {errors.emailAddress.length > 0 &&
-          <span className='errors'>{errors.emailAddress}</span>}
+          <span className='errors'>{errors.emailAddress}</span>}<br />
         <label>
           Mobile Number:
               <input type="text" ref={(c) => this.mobileNumber = c} name="mobileNumber" onChange={this.handleChange} noValidate />
         </label><br />
         {errors.mobileNumber.length > 0 &&
-          <span className='errors'>{errors.mobileNumber}</span>}
+          <span className='errors'>{errors.mobileNumber}</span>}<br />
         <label>
           Company Name:
               <input type="text" ref={(c) => this.companyName = c} name="companyName" />
@@ -147,10 +154,11 @@ class testForm extends Component {
         
         <label>
           Company Notes:
-              <textarea type="text" ref={(c) => this.companyNotes = c} name="companyNotes" onChange={this.handleChange} placeholder="Transfer plain text to HTML format."  noValidate />
         </label><br />
+        <textarea type="text" ref={(c) => this.companyNotes = c} name="companyNotes" onChange={this.handleChange} placeholder="Transfer plain text to HTML format."  noValidate />
+
         {errors.companyNotes.length > 0 &&
-          <span className='errors'>{errors.companyNotes}</span>}
+          <span className='errors'>{errors.companyNotes}</span>}<br />
 
         <button onClick={this.submitEvent} type="submit" >
           Submit
